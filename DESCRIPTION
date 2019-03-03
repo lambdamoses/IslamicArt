@@ -1,0 +1,28 @@
+Package: IslamicArt
+Type: Package
+Title: Color Palettes Inspired by Islamic Art
+Version: 0.1.0
+Authors@R: 
+    person("Lambda", "Moses", email = "dlu2@caltech.edu",
+    role = c("aut", "cre"))
+Description: 
+    Color palettes inspired by Islamic art, especially architecture,
+    from Abu Dhabi, Alhambra, Cordoba, Damascus, Fes, Istanbul, Jerusalem, Konya,
+    Shiraz, and Samarqand.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports:
+    ggplot2,
+    viridis,
+    grDevices,
+    graphics,
+    ochRe,
+    dichromat
+Suggests:
+    devtools,
+    scales,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 6.1.1

@@ -1,0 +1,119 @@
+---
+title: "Color Palettes Inspired by Islamic Art"
+author: "Lambda Moses"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Installation
+This package is not yet on CRAN, so must be installed this way:
+```{r, eval=FALSE}
+devtools::install_github("lambdamoses/IslamicArt")
+```
+
+# Introduction
+TLDR; just skip these paragraphs about history and go straight to the code.
+
+When talking about the Islamic world, the first things that come to people's mind may be authoritarian third world countries and war. However, the Islamic world is and has been far more than that. Between about 9th century and about 16th century was a golden age of the Islamic world, in which philosophy ("science" was natural philosophy), math, astronomy, physics, and medicine flourished. That was an era when Greek philosophy was translated, intensively studied, and preserved, and through which Europe was introduced to Aristotle and more of Greek philosophy.
+
+Why did the golden age decline, so much so that the Islamic world is so behind in science today? This is complicated. Some blame al-Ghazali for his book Incoherence of Philosophers, that made Muslims dogmatic and closed to rational inquiry. However, this turns out to be a myth, and has been debunked in the book [Galileo Goes to Jail: And Other Myths About Science and Religion](https://www.goodreads.com/book/show/5543495-galileo-goes-to-jail). Islamic philosophy in fact went on after al-Ghazali, and al-Ghazali in fact advocated for critical thinking in the Incoherence of Philosophers. Some would attribute the decline to the Mongol invasion that lead to the collapse of the Abbasid Empire, so scholars no longer had a place to do research. One theory attributes the decline to [Nizamiyya colleges](https://en.qantara.de/content/the-decline-of-islamic-scientific-thought-dont-blame-it-on-al-ghazali), which focused on religious studies at the expense of scientific (I mean natural philosophy) inquiry, and as a result, becoming religious scholars became more attractive than becoming natural philosophers. In the book [Holistic Islam](https://www.goodreads.com/book/show/38325560-holistic-islam), Mevlevi sheikh Kabir Edmund Helminski suggested that the turning of Islamic scholars from an originally spiritual Islam to legalism lead to the demise of Islamic civilization. The book [Lost Islamic History](https://www.goodreads.com/book/show/20794875-lost-islamic-history) suggests that European colonialists' authoritarian rule and division of Islamic lands into small portions contributed to the demise of Islamic civilization. 
+
+There're many theories, and there isn't one single cause to the demise of the Islamic golden age. Anyway, though the golden age is now lost in history, many artifacts from that era are still available for visit, as tourist attractions or as museum exhibitions. This package can't bring the Islamic golden age back. However, at least it can let you commemorate the history by incorporating color schemes of related historical artifacts, mostly from that period, some earlier and some later. 
+
+This package provides color palettes inspired by Islamic art, and can be used both with base R and `ggplot2`. These colors are especially useful when visualizing data related to the Islamic world. This package was also inspired by custom palette packages like [`ochRe`](https://github.com/ropenscilabs/ochRe) for Australia-inspired palettes and [`dutchmasters`](https://github.com/EdwinTh/dutchmasters), palettes derived from 17th century Dutch paintings. I borrowed a lot of code and documentation from `ochRe`.
+```{r}
+library(ochRe)
+library(ggplot2)
+library(dichromat)
+library(IslamicArt)
+theme_set(theme_bw())
+```
+
+These are the palettes in this package:
+
+```{r}
+viz_palettes(islamic_palettes)
+```
+
+Since the colors and their ordering were chosen by hand to recapitulate color orderings in the original artifacts, the colors do NOT correspond to numeric values and using these palettes for continuous values is discouraged. By default, the `ggplot2` color scales from this package are discrete.
+
+# Examples
+```{r}
+ggplot(iris, aes(Sepal.Length, Sepal.Width, color = Species)) +
+  geom_point() +
+  scale_color_islamic(palette = "shiraz2")
+```
+
+This palette was derived from a Quran manuscript from Shiraz that made heavy use of gold leaves and blue paint.
+
+```{r}
+ggplot(diamonds, aes(color, fill = clarity)) +
+  geom_bar() +
+  scale_fill_islamic(palette = "samarqand")
+```
+
+This palette is derived from the blue domes, stone walls, dark blue and turquoise tiles, and stone floor from Samarqand, Uzbekistan.
+
+```{r}
+ggplot(diamonds, aes(clarity, fill = color)) +
+  geom_bar(position = "fill") +
+  scale_fill_islamic(palette = "cordoba")
+```
+
+This palette is derived from the horseshoe arches, pillars, and the mihrab (a niche in mosques facing Mecca) in the Grand Mosque of Cordoba.
+
+```{r}
+# Do a continuous one anyway
+filled.contour(volcano, color.palette = islamic_pal(palette = "jerusalem"), asp = 1)
+```
+
+This palette is derived from colors of Dome of the Rock. Here the top of the volcano is colored like the golden dome, and the lower parts of the volcano are colored like the blue and green tiles, and the very bottom of the volcano is colored like the stone floor surrounding Dome of the Rock.
+
+# Color vision impairment
+Here are simulations of how color blindness will affect perception of the palettes. Use this section to choose palettes readable by people with color blindness.
+```{r}
+# Deutanopia
+pal_deutan <- lapply(islamic_palettes, dichromat, type = "deutan")
+viz_palettes(pal_deutan)
+```
+
+```{r}
+# Protanopia
+pal_protan <- lapply(islamic_palettes, dichromat, type = "protan")
+viz_palettes(pal_protan)
+```
+
+```{r}
+# Tritanopia
+pal_tritan <- lapply(islamic_palettes, dichromat, type = "tritan")
+viz_palettes(pal_tritan)
+```
+
+# Image sources
+* `shiraz`: Nasir al-Mulk Mosque, Shiraz, Iran. https://www.atlasobscura.com/places/nasir-al-mulk-mosque
+* `shiraz2`: The Jerrāḥ Pasha Quran Quran, Shiraz. http://islamic-arts.org/2012/the-morgan-treasures-of-islamic-manuscripts/
+* `samarqand`: Shah-i-Zinda Necropolis, Samarqand, Uzbekistan. https://www.flickr.com/photos/danielzolli/1443764917
+* `samarqand2`: Bibi-Khanym Mosque tile. https://www.flickr.com/photos/mayhlen/6411406569
+* `abu_dhabi`: Sheikh Zayed Grand Mosque, Abu Dhabi, UAE. https://blog.headout.com/sheikh-zayed-grand-mosque-abu-dhabi-tours/
+* `istanbul`: Sultan Ahmed Mosque (Blue Mosque) exterior. https://istanbultourstudio.com/things-to-do/blue-mosque
+* `istanbul2`: Blue Mosque interior. https://minoritynomad.com/istanbuls-the-blue-mosque-interior-prayer/
+* `istanbul3`: Hagia Sophia interior. Hagia Sophia was built in 537 AD as a cathedral, but after the Ottoman conquest, it was converted into a mosque. Now it's a museum. https://www.travelandleisure.com/attractions/museums-galleries/hagia-sophia-unique-facts-history
+* `konya`: Mevlana Museum, Konya, Turkey. This is the tomb of Sufi poet Jalal ad-Din Rumi, who founded the Mevlevi Order, known for the whirling dervishes. https://sufism.org/threshold
+* `jerusalem`: Dome of the Rock, Jerusalem. This is one of the earliest Islamic architecture, dating from late 7th century. http://www.flickriver.com/photos/mikeghouse/4045803559/
+* `fes`: Panorama of Fes, Morocco. https://www.dreamstime.com/panoramic-view-medina-old-town-fes-morocco-image108882071
+* `fes2`: Qarawiyyin University, Fes, Morocco. This is the oldest continuously operating university, which was founded by a Muslim woman called Fatima al-Fihri in 859 AD.
+* `alhambra`: al-Andalus (Islamic Spain) style geometric tile. https://www.pinterest.com/pin/566609196846357568/
+* `cordoba`: Grand Mosque of Cordoba, Spain. A cathedral was built in the middle of this mosque after Christians reconquered Spain. Now this mosque is no longer operating and is a tourist attraction. https://www.ruralidays.co.uk/blog/mosque-of-cordoba-spain-facts/
+* `damascus`: Umayyad Mosque, Damascus, Syria. This is also one of the earliest Islamic architecture, whose style is significantly influenced by Byzantine art. https://depositphotos.com/216371518/stock-photo-umayyad-mosque-damascus-syria.html
+* `ottoman`: Ottoman style tile. https://www.etsy.com/listing/554967554/turkish-ceramic-tile-motif-vector
