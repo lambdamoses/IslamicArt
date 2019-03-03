@@ -8,6 +8,12 @@ were hand picked to recapitulate the color distribution in the original
 art work, so the colors do not reflect numeric values in data and the
 visualization may cause confusion if used for continuous data.
 
+This package was also inspired by custom palette packages like
+[`ochRe`](https://github.com/ropenscilabs/ochRe) for Australia-inspired
+palettes and [`dutchmasters`](https://github.com/EdwinTh/dutchmasters),
+palettes derived from 17th century Dutch paintings. I borrowed a lot of
+code and documentation from `ochRe`.
+
 ## Installation
 
 This package is not yet on CRAN. Install this package with:
@@ -78,3 +84,5 @@ the volcano is colored like the golden dome, and the lower parts of the
 volcano are colored like the blue and green tiles, and the very bottom
 of the volcano is colored like the stone floor surrounding Dome of the
 Rock.
+
+For color blindness perceptions, see the vignette.
