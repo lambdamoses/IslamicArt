@@ -2,19 +2,19 @@
 % Please edit documentation in R/scales.R
 \name{islamic_pal}
 \alias{islamic_pal}
-\title{islamic palette with ramped colours}
+\title{Islamic palette with ramped colors}
 \usage{
 islamic_pal(palette = "samarqand", alpha = 1, reverse = FALSE)
 }
 \arguments{
-\item{palette}{Choose from 'islamic_palettes' list}
+\item{palette}{Choose from \code{\link{islamic_palettes}} list.}
 
-\item{alpha}{transparency}
+\item{alpha}{Transparency.}
 
-\item{reverse}{If TRUE, the direction of the colours is reversed.}
+\item{reverse}{If TRUE, the direction of the colors is reversed.}
 }
 \description{
-islamic palette with ramped colours
+Islamic palette with ramped colors
 }
 \examples{
 library(scales)

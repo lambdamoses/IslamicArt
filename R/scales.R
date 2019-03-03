@@ -1,8 +1,8 @@
-#' islamic palette with ramped colours
+#' Islamic palette with ramped colors
 #'
-#' @param palette Choose from 'islamic_palettes' list
-#' @param alpha transparency
-#' @param reverse If TRUE, the direction of the colours is reversed.
+#' @param palette Choose from \code{\link{islamic_palettes}} list.
+#' @param alpha Transparency.
+#' @param reverse If TRUE, the direction of the colors is reversed.
 #'
 #' @examples
 #' library(scales)
@@ -22,13 +22,13 @@ islamic_pal <- function(palette="samarqand", alpha = 1, reverse = FALSE) {
 #' Setup color palette for ggplot2
 #'
 #' @rdname scale_color_islamic
-#' @param palette Choose from 'islamic_palettes' list
-#' @param reverse logical, Reverse the order of the colours?
-#' @param alpha transparency
-#' @param discrete whether to use a discrete colour palette
-#' @param ... additional arguments to pass to scale_color_gradientn
+#' @param palette Choose from \code{\link{islamic_palettes}} list.
+#' @param reverse Logical, whether to reverse the order of the colors.
+#' @param alpha Transparency.
+#' @param discrete Whether to use a discrete color palette.
+#' @param ... Additional arguments to pass to \code{\link[ggplot2]{scale_color_gradientn}}.
 #' @inheritParams viridis::scale_color_viridis
-#' @importFrom ggplot2 scale_colour_manual
+#' @importFrom ggplot2 scale_color_gradientn discrete_scale
 #' @importFrom viridis scale_color_viridis
 #' @examples
 #' library(ggplot2)
@@ -64,14 +64,14 @@ scale_colour_islamic <- scale_color_islamic
 
 #' Setup fill palette for ggplot2
 #'
-#' @param palette Choose from 'islamic_palettes' list
+#' @param palette Choose from \code{\link{islamic_palettes}} list.
 #'
 #' @inheritParams viridis::scale_fill_viridis
 #' @inheritParams islamic_pal
 #'
-#' @param discrete whether to use a discrete colour palette
-#' @param ... additional arguments to pass to scale_color_gradientn
-#' @importFrom ggplot2 scale_fill_manual discrete_scale scale_fill_gradientn
+#' @param discrete Whether to use a discrete color palette.
+#' @param ... Additional arguments to pass to \code{\link[ggplot2]{scale_fill_gradientn}}.
+#' @importFrom ggplot2 scale_fill_gradientn
 #'
 #' @export
 scale_fill_islamic <- function(..., palette="samarqand",

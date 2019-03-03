@@ -8,15 +8,15 @@ scale_fill_islamic(..., palette = "samarqand", discrete = TRUE,
   alpha = 1, reverse = TRUE)
 }
 \arguments{
-\item{...}{additional arguments to pass to scale_color_gradientn}
+\item{...}{Additional arguments to pass to \code{\link[ggplot2]{scale_fill_gradientn}}.}
 
-\item{palette}{Choose from 'islamic_palettes' list}
+\item{palette}{Choose from \code{\link{islamic_palettes}} list.}
 
-\item{discrete}{whether to use a discrete colour palette}
+\item{discrete}{Whether to use a discrete color palette.}
 
 \item{alpha}{pass through parameter to \code{viridis}}
 
-\item{reverse}{If TRUE, the direction of the colours is reversed.}
+\item{reverse}{If TRUE, the direction of the colors is reversed.}
 }
 \description{
 Setup fill palette for ggplot2

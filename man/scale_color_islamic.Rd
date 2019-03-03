@@ -12,15 +12,15 @@ scale_colour_islamic(..., palette = "samarqand", discrete = TRUE,
   alpha = 1, reverse = FALSE)
 }
 \arguments{
-\item{...}{additional arguments to pass to scale_color_gradientn}
+\item{...}{Additional arguments to pass to \code{\link[ggplot2]{scale_color_gradientn}}.}
 
-\item{palette}{Choose from 'islamic_palettes' list}
+\item{palette}{Choose from \code{\link{islamic_palettes}} list.}
 
-\item{discrete}{whether to use a discrete colour palette}
+\item{discrete}{Whether to use a discrete color palette.}
 
-\item{alpha}{transparency}
+\item{alpha}{Transparency.}
 
-\item{reverse}{logical, Reverse the order of the colours?}
+\item{reverse}{Logical, whether to reverse the order of the colors.}
 }
 \description{
 Setup color palette for ggplot2
