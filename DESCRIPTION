@@ -17,12 +17,12 @@ Imports:
     viridis,
     grDevices,
     graphics,
-    ochRe,
-    dichromat
+    ochRe
 Suggests:
     devtools,
     scales,
     knitr,
-    rmarkdown
+    rmarkdown,
+    dichromat
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
